@@ -45,9 +45,7 @@ const App = () => {
         avatar: ''
     }));
     navigate("/");
-
 };
-
 
   const handleMenuItemClick = (key) => {
       setSelectedMenuItem(key);
@@ -55,9 +53,7 @@ const App = () => {
 
   useEffect(() => {
     console.log("access_token: "+  user.access_token);
-    const url = "http://localhost:8080/api/v1/me";  
-    console.log("handleMe: "+url);
-    fetch(url, {
+    fetch(`${process.env.REACT_APP_API_URL}/api/v1/me`, {
         method: "GET",
         headers: {
             'Authorization': `Bearer ${user.access_token}`,
@@ -111,7 +107,7 @@ const App = () => {
   return (
     <Layout style={layoutStyle}>
       <Sider width="25%" style={siderStyle}>
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '80%' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
           <Card style={{ width: '75%', height: '90%' }}>
             <Space direction="vertical" align="start">
               <div style={{ textAlign: 'center' }}>

@@ -91,7 +91,7 @@ const IndexPage = () => {
     
     useEffect(() => {
         // setIsLoading(true);
-        fetch("http://localhost:8080/api/v1/stations", {
+        fetch(`${process.env.REACT_APP_API_URL}/api/v1/stations`, {
             method: "GET",
         })
         .then((response) => response.json())
@@ -119,7 +119,7 @@ const IndexPage = () => {
         
             // const queryString = new URLSearchParams(params).toString();
             // const url = `http://localhost:8080/api/v1/schedules?${queryString}`;
-            let url = "http://localhost:8080/api/v1/schedules?";
+            let url = `${process.env.REACT_APP_API_URL}/api/v1/schedules?`;
                 url += `return=${params.return}&`;
                 url += `startAt=${params.startAt}&`;
                 url += `arrivalAt=${params.arrivalAt}&`;
@@ -144,7 +144,7 @@ const IndexPage = () => {
                         navigate('/search')
                     }else{
                         console.log("GET schedules is none.");
-                        alert("GET schedules is none.");
+                        // alert("GET schedules is none.");
                         countDown();
                     }
                 } else {
@@ -230,15 +230,15 @@ const IndexPage = () => {
     const countDown = () => {
         let secondsToGo = 5;
 
-        const instance = modal.success({
-        title: 'This is a notification message',
-        content: `This modal will be destroyed after ${secondsToGo} second.`,
+        const instance = modal.error({
+        title: 'Không tìm thấy lịch trình phù hợp',
+        content: `Thông báo này sẽ đóng sau ${secondsToGo} giây.`,
         });
 
         const timer = setInterval(() => {
         secondsToGo -= 1;
         instance.update({
-            content: `This modal will be destroyed after ${secondsToGo} second.`,
+            content: `Thông báo này sẽ đóng sau ${secondsToGo} giây.`,
         });
         }, 1000);
 

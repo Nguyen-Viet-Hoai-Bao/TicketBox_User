@@ -79,12 +79,12 @@ const SearchPage = () => {
         })
         .then((response) => response.json())
         .then((data) => {
-            console.log("stations: "+ data.data);
+            console.log("stations: ", data);
             if (data.meta.status_code === 200) {
                 setDeparturePoint(data.data.result.stationPoint);
                 setArrivalPoint(data.data.result.stationPoint);
+                console.log("setLoading(false);" + departurePoint+ "---" + arrivalPoint+ "---" + params.startAt);
                 setLoading(false);
-                console.log("setLoading(false);" + departurePoint+ "---" +arrivalPoint);
             } else {
                 alert("GET stations không thành công. Vui lòng thử lại.");
             }
@@ -210,10 +210,10 @@ const SearchPage = () => {
                             <Label>Ngày đi</Label>
                             <DatePickerContainer>
                                 <DatePickerStyled
-                                    value={departDate}
+                                    value={departDate ? moment.unix(params.startAt) : null} // Chuyển đổi giá trị Unix timestamp sang moment
                                     format="DD/MM/YYYY"
                                     onChange={(date) => setDepartDate(date)}
-                                    // disabled
+                                    disabled
                                 />
                             </DatePickerContainer>
                         </div>

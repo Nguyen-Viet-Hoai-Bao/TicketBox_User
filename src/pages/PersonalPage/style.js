@@ -1,15 +1,14 @@
 
 export const contentStyle = {
     textAlign: 'center',
-    minHeight: 120,
-    marginBottom: '10px',
+    minHeight: '20%',
+    padding: '30px',
     color: 'black',
     background: 'white', 
   };
   
   export const siderStyle = {
     textAlign: 'center',
-    marginTop: '10px', 
     color: 'black',
     backgroundColor: 'white',
     background: '#C0C0C0'
@@ -19,7 +18,7 @@ export const contentStyle = {
     marginBottom: '10px',
     overflow: 'hidden',
     width: '100%',
-    height: '100vh',
+    height: '87vh',
     background: 'none', 
   };
   
